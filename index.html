@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ACA — Bridgeland High School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F7F5; --navy:#172033; --slate:#526176; --orange:#D97745; --text:#171A1F;
+  --serif:'Fraunces', Georgia, serif; --sans:'Libre Franklin', 'Segoe UI', sans-serif;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  box-sizing:border-box;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#F7F7F5; --text:#171A1F; } }
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth; scroll-padding-top:70px;}
+body{background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.55; overflow-x:hidden;}
+img,svg{max-width:100%;}
+a{color:inherit; text-decoration:none;}
+.wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+h1,h2,h3{font-family:var(--serif); font-weight:500; color:var(--navy); line-height:1.1;}
+.eyebrow{color:var(--slate); font-size:0.85rem; letter-spacing:0.02em;}
+
+header{position:sticky; top:0; top:env(safe-area-inset-top,0px); background:rgba(247,247,245,0.92); backdrop-filter:blur(6px); border-bottom:1px solid rgba(23,32,51,0.1); z-index:50;}
+.nav-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 32px; max-width:1120px; margin:0 auto;}
+.logo{font-family:var(--serif); font-size:1.25rem; color:var(--navy); font-weight:600;}
+nav.links{display:flex; gap:28px; font-size:0.95rem;}
+nav.links a{border-bottom:2px solid transparent; padding-bottom:4px; transition:border-color .2s;}
+nav.links a:hover{border-color:var(--orange);}
+.nav-cta{background:var(--orange); color:#fff; padding:9px 20px; border-radius:3px; font-size:0.9rem; font-weight:600; transition:background .2s;}
+.nav-cta:hover{background:#c1633a;}
+.burger{display:none; flex-direction:column; gap:4px; background:none; border:none; cursor:pointer;}
+.burger span{width:22px; height:2px; background:var(--navy);}
+#mobile-menu{display:none; flex-direction:column; gap:0; padding:0 32px 20px; border-bottom:1px solid rgba(23,32,51,0.1);}
+#mobile-menu a{padding:10px 0; border-top:1px solid rgba(23,32,51,0.08);}
+@media(max-width:840px){
+  nav.links, .nav-cta{display:none;}
+  .burger{display:flex;}
+  #mobile-menu.open{display:flex;}
+}
+
+.hero{padding:64px 32px 88px; max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+.hero h1{font-size:clamp(2.3rem,4.5vw,3.4rem); margin:14px 0 20px; max-width:15ch;}
+.hero p{color:var(--slate); font-size:1.08rem; max-width:46ch; margin-bottom:32px;}
+.cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+.btn-primary{background:var(--navy); color:#fff; padding:13px 26px; border-radius:3px; font-weight:600; display:inline-block; transition:background .2s;}
+.btn-primary:hover{background:#0e1524;}
+.btn-secondary{border:1.5px solid var(--navy); color:var(--navy); padding:12px 26px; border-radius:3px; font-weight:600; display:inline-block; transition:all .2s;}
+.btn-secondary:hover{background:var(--navy); color:#fff;}
+.hero-media{aspect-ratio:4/5; background:var(--slate); border-radius:3px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.95rem; text-align:center; padding:24px; position:relative; overflow:hidden; animation:reveal 0.9s ease-out;}
+.hero-media::after{content:"↳ replace with real club/team photo (portrait, 4:5)"; opacity:0.85;}
+@keyframes reveal{from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);}}
+@media(max-width:840px){.hero{grid-template-columns:1fr; padding-top:36px;} .hero-media{order:-1; aspect-ratio:16/9;}}
+
+section{padding:80px 0;}
+.section-head{max-width:640px; margin-bottom:48px;}
+.section-head h2{font-size:clamp(1.8rem,3vw,2.4rem);}
+.section-head p{color:var(--slate); margin-top:12px; max-width:56ch;}
+
+.about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start;}
+.about-grid .stat-block{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:36px;}
+.stat{border-top:2px solid var(--orange); padding-top:10px;}
+.stat b{font-family:var(--serif); font-size:1.7rem; color:var(--navy); display:block;}
+.stat span{color:var(--slate); font-size:0.9rem;}
+@media(max-width:840px){.about-grid{grid-template-columns:1fr;}}
+
+.wwd-row{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; padding:36px 0; border-top:1px solid rgba(23,32,51,0.1);}
+.wwd-row:last-child{border-bottom:1px solid rgba(23,32,51,0.1);}
+.wwd-row:nth-child(even) .wwd-media{order:2;}
+.wwd-media{aspect-ratio:16/10; background:#e7e5e0; border:1px dashed var(--slate); border-radius:3px; display:flex; align-items:center; justify-content:center; color:var(--slate); font-size:0.88rem; text-align:center; padding:20px;}
+.wwd-text h3{font-size:1.4rem; margin-bottom:10px;}
+.wwd-text p{color:var(--slate);}
+@media(max-width:840px){.wwd-row{grid-template-columns:1fr;} .wwd-row:nth-child(even) .wwd-media{order:0;}}
+
+.proj-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:24px;}
+.proj-card{border:1px solid rgba(23,32,51,0.12); border-radius:3px; overflow:hidden; background:#fff;}
+.proj-card.large{grid-column:span 4;}
+.proj-card.small{grid-column:span 2;}
+.proj-media{aspect-ratio:16/9; background:#e7e5e0; display:flex; align-items:center; justify-content:center; color:var(--slate); font-size:0.85rem; text-align:center; padding:16px;}
+.proj-body{padding:22px;}
+.proj-body h3{font-size:1.15rem; margin-bottom:8px;}
+.proj-body p{color:var(--slate); font-size:0.95rem; margin-bottom:12px;}
+.tag-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;}
+.tag{font-size:0.78rem; color:var(--navy); background:rgba(23,32,51,0.07); padding:4px 10px; border-radius:3px;}
+.proj-body a{color:var(--orange); font-weight:600; font-size:0.92rem;}
+@media(max-width:840px){.proj-card.large,.proj-card.small{grid-column:span 6;}}
+
+
+.team-section{background:var(--navy); color:#F7F7F5;}
+.team-section .section-head h2{color:#fff;}
+.team-section .section-head p{color:#b7c0cd;}
+.team-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:28px;}
+.team-card{text-align:left;}
+.team-photo{aspect-ratio:1; background:#293349; border-radius:3px; margin-bottom:14px; display:flex; align-items:center; justify-content:center; color:#7f8ba0; font-size:0.8rem; text-align:center; padding:10px;}
+.team-card h3{font-family:var(--serif); font-size:1.05rem; color:#fff; margin-bottom:2px;}
+.team-card span{color:var(--orange); font-size:0.88rem;}
+@media(max-width:840px){.team-grid{grid-template-columns:repeat(2,1fr);}}
+
+.join-box{background:#fff; border:1px solid rgba(23,32,51,0.12); border-radius:3px; padding:48px; display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center;}
+.join-box h2{font-size:1.9rem; margin-bottom:12px;}
+.faq{border-top:1px solid rgba(23,32,51,0.12); padding-top:16px; margin-top:16px;}
+.faq dt{font-weight:600; color:var(--navy); margin-top:12px;}
+.faq dd{color:var(--slate); font-size:0.92rem;}
+@media(max-width:840px){.join-box{grid-template-columns:1fr;}}
+
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+.contact-info dl{margin-top:20px;}
+.contact-info dt{font-weight:600; color:var(--navy); margin-top:14px; font-size:0.9rem;}
+.contact-info dd{color:var(--slate);}
+.officer-links{margin-top:24px; display:flex; flex-direction:column; gap:10px;}
+.officer-links a{color:var(--orange); font-weight:600; font-size:0.92rem;}
+form{display:flex; flex-direction:column; gap:14px;}
+label{font-size:0.85rem; color:var(--slate); margin-bottom:4px; display:block;}
+input,select,textarea{width:100%; padding:11px 13px; border:1px solid rgba(23,32,51,0.2); border-radius:3px; font-family:var(--sans); font-size:0.95rem; background:#fff; color:var(--text);}
+textarea{resize:vertical; min-height:100px;}
+form button{align-self:flex-start; background:var(--orange); color:#fff; border:none; padding:12px 28px; border-radius:3px; font-weight:600; cursor:pointer; font-size:0.95rem; transition:background .2s;}
+form button:hover{background:#c1633a;}
+.form-note{font-size:0.82rem; color:var(--slate); margin-top:6px;}
+@media(max-width:840px){.contact-grid{grid-template-columns:1fr;}}
+
+footer{background:var(--navy); color:#b7c0cd; padding:48px 0 28px; font-size:0.9rem;}
+.footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; margin-bottom:32px;}
+.footer-grid a{display:block; color:#b7c0cd; margin-top:8px;}
+.footer-grid a:hover{color:var(--orange);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.12); padding-top:20px; font-size:0.82rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+@media (prefers-reduced-motion:reduce){.hero-media{animation:none;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="logo" href="#home">ACA</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#what-we-do">What We Do</a>
+      <a href="#done">What We've Done</a>
+      <a href="#events">Events</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#join">Get Involved</a>
+    <button class="burger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div id="mobile-menu">
+    <a href="#about">About</a>
+    <a href="#what-we-do">What We Do</a>
+    <a href="#done">What We've Done</a>
+    <a href="#events">Events</a>
+    <a href="#team">Team</a>
+    <a href="#join">Get Involved</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div>
+    <p class="eyebrow">Bridgeland High School · Academic Competition</p>
+    <h1>ACA</h1>
+    <p>We're a student-led academic team competing across categories like humanities, history, science, and [category] — preparing together through practice tests, study sessions, and tournaments.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="#join">Get Involved</a>
+      <a class="btn-secondary" href="#done">Explore What We've Done</a>
+    </div>
+  </div>
+  <div class="hero-media"></div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow">About Us</p>
+      <h2>Who we are</h2>
+      <p style="color:var(--slate); margin-top:14px;">[2–4 sentences: when the club started, what problem it solves for members, and what makes it distinct from other academic clubs at school.]</p>
+      <div class="stat-block">
+        <div class="stat"><b>[X]</b><span>medals — Humanities</span></div>
+        <div class="stat"><b>[X]</b><span>medals — History</span></div>
+        <div class="stat"><b>[X]</b><span>medals — Science</span></div>
+        <div class="stat"><b>[X]</b><span>medals — [Category]</span></div>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Our Mission</p>
+      <h3 style="font-size:1.2rem; margin:10px 0 24px;">[One or two sentences on what the club is trying to accomplish.]</h3>
+      <div class="wwd-media" style="margin-bottom:20px;">Add photo — general meeting or study session</div>
+      <p style="color:var(--slate);">[Optional: a short note on how the club got started, or a quote from a founding member/advisor.]</p>
+    </div>
+  </div>
+</section>
+
+<section id="what-we-do" style="background:#f1f0ec;">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What We Do</p>
+      <h2>Our categories</h2>
+    </div>
+    <div class="wwd-row">
+      <div class="wwd-media">Add photo — humanities study session</div>
+      <div class="wwd-text"><h3>Humanities</h3><p>[Short description of what this category covers and how the team prepares for it.]</p></div>
+    </div>
+    <div class="wwd-row">
+      <div class="wwd-media">Add photo — history team</div>
+      <div class="wwd-text"><h3>History</h3><p>[Short description of what this category covers and how the team prepares for it.]</p></div>
+    </div>
+    <div class="wwd-row">
+      <div class="wwd-media">Add photo — science team</div>
+      <div class="wwd-text"><h3>Science</h3><p>[Short description of what this category covers and how the team prepares for it.]</p></div>
+    </div>
+    <div class="wwd-row">
+      <div class="wwd-media">Add photo — [category] team</div>
+      <div class="wwd-text"><h3>[Category]</h3><p>[Short description of what this category covers and how the team prepares for it.]</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="done">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What We've Done</p>
+      <h2>Our results</h2>
+      <p>A running record of tournaments and results — replace with your own placements, photos, and write-ups.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card large">
+        <div class="proj-media">Add photo — awards ceremony</div>
+        <div class="proj-body">
+          <h3>[Regional Tournament — 1st Place Overall]</h3>
+          <p>[1–2 sentence description of the tournament and how the team placed.]</p>
+          <div class="tag-row"><span class="tag">Humanities</span><span class="tag">History</span><span class="tag">Science</span></div>
+          <a href="#">Learn more →</a>
+        </div>
+      </div>
+      <div class="proj-card small">
+        <div class="proj-media">Add photo</div>
+        <div class="proj-body">
+          <h3>[Individual Medal — Science]</h3>
+          <p>[Short description.]</p>
+          <div class="tag-row"><span class="tag">Science</span></div>
+          <a href="#">Learn more →</a>
+        </div>
+      </div>
+      <div class="proj-card small">
+        <div class="proj-media">Add photo</div>
+        <div class="proj-body">
+          <h3>[Individual Medal — Humanities]</h3>
+          <p>[Short description.]</p>
+          <div class="tag-row"><span class="tag">Humanities</span></div>
+          <a href="#">Learn more →</a>
+        </div>
+      </div>
+      <div class="proj-card large">
+        <div class="proj-media">Add photo — state qualifiers</div>
+        <div class="proj-body">
+          <h3>[State Qualification]</h3>
+          <p>[1–2 sentence description.]</p>
+          <div class="tag-row"><span class="tag">Team</span><span class="tag">[Category]</span></div>
+          <a href="#">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="events" style="background:#f1f0ec;">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Events</p>
+      <h2>What's coming up</h2>
+      <p>Meeting dates, tournament info, study slides, and check-in QR codes live on a separate page so officers can update them without touching the rest of the site.</p>
+    </div>
+<!-- NEW -->
+<a class="btn-primary" href="aca-events.html" style="display:inline-block;">View Events & Resources →</a>  </div>
+</section>
+
+<section class="team-section" id="team">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Team</p>
+      <h2>Meet the officers</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card"><div class="team-photo">Add photo</div><h3>[Name]</h3><span>President</span></div>
+      <div class="team-card"><div class="team-photo">Add photo</div><h3>[Name]</h3><span>Vice President</span></div>
+      <div class="team-card"><div class="team-photo">Add photo</div><h3>[Name]</h3><span>Secretary</span></div>
+      <div class="team-card"><div class="team-photo">Add photo</div><h3>[Advisor Name]</h3><span>Faculty Advisor</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="wrap">
+    <div class="join-box">
+      <div>
+        <p class="eyebrow">Get Involved</p>
+        <h2>Interested in joining?</h2>
+        <p style="color:var(--slate);">Whether you're into humanities, history, science, or [category], there's a place for you. Reach out and we'll fill you in on how the team works and when new members are added.</p>
+        <a class="btn-primary" href="#contact" style="margin-top:20px; display:inline-block;">Get in Touch</a>
+      </div>
+      <dl class="faq">
+        <dt>Who can join?</dt><dd>Grades 9–12, no prior experience needed.</dd>
+        <dt>When can I join?</dt><dd>[New members typically join at the start of each semester — reach out below and we'll let you know when applications open.]</dd>
+        <dt>When do we meet?</dt><dd>[Tuesdays and Thursdays], after school.</dd>
+        <dt>Where?</dt><dd>Room [XXX].</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:#f1f0ec;">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <p class="eyebrow">Contact</p>
+      <h2>Get in touch</h2>
+      <dl>
+        <dt>Email</dt><dd>[aca@bridgelandhs.org]</dd>
+        <dt>Instagram</dt><dd>[@acaclub]</dd>
+        <dt>School</dt><dd>Bridgeland High School, Room [XXX]</dd>
+        <dt>Advisor</dt><dd>[Mr./Ms. Name]</dd>
+      </dl>
+      <p class="eyebrow" style="margin-top:24px;">Message an Officer Directly</p>
+      <div class="officer-links">
+        <a href="mailto:president@acaclub.org">[Name], President →</a>
+        <a href="mailto:vp@acaclub.org">[Name], Vice President →</a>
+      </div>
+    </div>
+    <form id="contact-form">
+      <div><label for="name">Name</label><input id="name" required></div>
+      <div><label for="email">Email</label><input id="email" type="email" required></div>
+      <div><label for="reason">This is about</label>
+        <select id="reason"><option>General question</option><option>Joining the club</option><option>Other</option></select>
+      </div>
+      <div><label for="message">Message</label><textarea id="message" required></textarea></div>
+      <button type="submit">Send Message</button>
+      <p class="form-note">Currently opens your email client. Swap this for a real form endpoint (FastAPI + SQLite, or a form service) once the backend is ready.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:#fff;">ACA</div>
+        <p style="max-width:32ch; margin-top:10px; color:#8992a3;">Bridgeland High School's student-led academic competition club.</p>
+      </div>
+      <div>
+        <b style="color:#fff;">Explore</b>
+        <a href="#about">About</a><a href="#done">What We've Done</a><a href="#events">Events</a>
+      </div>
+      <div>
+        <b style="color:#fff;">Connect</b>
+        <a href="#">Instagram</a><a href="#">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ACA. Bridgeland High School.</span>
+      <span>Site built by the club — replace this line with your own credit.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+document.getElementById('contact-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value, email=document.getElementById('email').value;
+  const reason=document.getElementById('reason').value, msg=document.getElementById('message').value;
+  const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\nReason: ${reason}\n\n${msg}`);
+  window.location.href=`mailto:aca@bridgelandhs.org?subject=Website Contact — ${reason}&body=${body}`;
+});
+</script>
+</body>
+</html>
