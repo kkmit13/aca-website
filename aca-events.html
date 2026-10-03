@@ -3,609 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-<title>ACA — Events & Resources</title>
-
+<title>ACA — Events</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F7F7F5;
-  --navy:#172033;
-  --slate:#526176;
-  --orange:#D97745;
-  --text:#171A1F;
-
-  --serif:'Fraunces', Georgia, serif;
-  --sans:'Libre Franklin', 'Segoe UI', sans-serif;
-
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#FFFFFF; --ink:#1C120B; --umber:#5C4433; --gold:#C8A13B; --text:#15110D;
+  --maroon:#7A2E2E; --navy:#2B3A4A; --copper:#8C5A2B; --coffee:#3B2217;
+  --serif:'Fraunces', Georgia, serif; --sans:'Libre Franklin', 'Segoe UI', sans-serif;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
+*{box-sizing:border-box; margin:0; padding:0;}
+body{background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.5;}
+a{color:inherit; text-decoration:none;}
+.wrap{max-width:980px; margin:0 auto; padding:0 28px;}
+h1,h2,h3{font-family:var(--serif); font-weight:500; color:var(--ink);}
+.reveal{opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.in-view{opacity:1; transform:none;}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1!important; transform:none!important;}}
 
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#F7F7F5;
-    --text:#171A1F;
-  }
-}
+header{border-bottom:1px solid rgba(28,18,11,0.1); padding:22px 0; position:sticky; top:0; top:env(safe-area-inset-top,0px); background:rgba(255,255,255,0.95); backdrop-filter:blur(8px); z-index:10;}
+header .wrap{display:flex; justify-content:space-between; align-items:center;}
+.back-link{font-size:0.95rem; color:var(--umber); font-weight:600;}
+.back-link:hover{color:var(--gold);}
+.logo{font-family:var(--serif); font-size:1.3rem; color:var(--ink); font-weight:700;}
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+.page-head{padding:64px 0 36px;}
+.eyebrow{color:var(--umber); font-size:0.9rem; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;}
+.page-head h1{font-size:clamp(2.6rem,6vw,4rem); margin-top:10px;}
 
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--sans);
-  line-height:1.55;
-}
+.tabs{display:flex; gap:12px; margin-bottom:36px;}
+.tabs button{background:none; border:2px solid var(--ink); color:var(--ink); padding:11px 26px; border-radius:30px; font-size:1rem; cursor:pointer; font-weight:700;}
+.tabs button.active{background:var(--ink); color:#fff;}
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
+.event-card{border-top:5px solid var(--accent, var(--gold)); background:#faf8f5; padding:32px 28px; margin-bottom:22px;}
+.event-top{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:baseline;}
+.event-date{font-family:var(--serif); color:var(--accent, var(--gold)); font-size:1.3rem; font-weight:600;}
+.event-title h3{font-size:1.9rem; margin-top:4px;}
+.event-meta{color:var(--umber); font-size:1.05rem; margin-top:4px;}
+.event-actions{display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:20px;}
+.action-btn{border:2px solid var(--ink); color:var(--ink); padding:11px 22px; border-radius:2px; font-size:0.95rem; font-weight:700;}
+.action-btn:hover{background:var(--ink); color:#fff;}
+.qr-box{width:56px; height:56px; border:1px dashed var(--umber); display:flex; align-items:center; justify-content:center; font-size:0.6rem; color:var(--umber); text-align:center; padding:4px;}
 
-.wrap{
-  max-width:900px;
-  margin:0 auto;
-  padding:0 28px;
-}
-
-h1,h2,h3{
-  font-family:var(--serif);
-  font-weight:500;
-  color:var(--navy);
-}
-
-header{
-  border-bottom:1px solid rgba(23,32,51,0.1);
-  padding:20px 0;
-  position:sticky;
-  top:0;
-  top:env(safe-area-inset-top,0px);
-  background:rgba(247,247,245,0.94);
-  backdrop-filter:blur(6px);
-}
-
-header .wrap{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.back-link{
-  font-size:0.88rem;
-  color:var(--slate);
-}
-
-.back-link:hover{
-  color:var(--orange);
-}
-
-.logo{
-  font-family:var(--serif);
-  font-size:1.15rem;
-  color:var(--navy);
-  font-weight:600;
-}
-
-.page-head{
-  padding:48px 0 8px;
-}
-
-.eyebrow{
-  color:var(--slate);
-  font-size:0.85rem;
-}
-
-.page-head h1{
-  font-size:clamp(1.9rem,4vw,2.6rem);
-  margin:10px 0 12px;
-}
-
-.page-head p{
-  color:var(--slate);
-  max-width:56ch;
-}
-
-.quick-links{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin:24px 0 8px;
-}
-
-.quick-links a{
-  border:1px solid rgba(23,32,51,0.2);
-  padding:9px 18px;
-  border-radius:3px;
-  font-size:0.88rem;
-  font-weight:600;
-  color:var(--navy);
-}
-
-.quick-links a:hover{
-  border-color:var(--orange);
-  color:var(--orange);
-}
-
-section{
-  padding:40px 0;
-}
-
-.tabs{
-  display:flex;
-  gap:10px;
-  margin-bottom:8px;
-}
-
-.tabs button{
-  background:none;
-  border:1px solid var(--slate);
-  color:var(--slate);
-  padding:8px 20px;
-  border-radius:20px;
-  font-size:0.88rem;
-  cursor:pointer;
-}
-
-.tabs button.active{
-  background:var(--navy);
-  border-color:var(--navy);
-  color:#fff;
-}
-
-.event-card{
-  border-top:1px solid rgba(23,32,51,0.12);
-  padding:28px 0;
-}
-
-.event-card:last-child{
-  border-bottom:1px solid rgba(23,32,51,0.12);
-}
-
-.event-top{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
-  align-items:baseline;
-}
-
-.event-date{
-  font-family:var(--serif);
-  color:var(--orange);
-  font-size:1rem;
-  min-width:110px;
-}
-
-.event-title h3{
-  font-size:1.25rem;
-  margin-bottom:4px;
-}
-
-.event-meta{
-  color:var(--slate);
-  font-size:0.9rem;
-}
-
-.tag-row{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin:12px 0;
-}
-
-.tag{
-  font-size:0.78rem;
-  color:var(--navy);
-  background:rgba(23,32,51,0.07);
-  padding:4px 10px;
-  border-radius:3px;
-}
-
-.event-desc{
-  color:var(--slate);
-  font-size:0.95rem;
-  margin-bottom:14px;
-  max-width:64ch;
-}
-
-.event-actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-
-.action-btn{
-  border:1px solid var(--navy);
-  color:var(--navy);
-  padding:8px 16px;
-  border-radius:3px;
-  font-size:0.86rem;
-  font-weight:600;
-}
-
-.action-btn:hover{
-  background:var(--navy);
-  color:#fff;
-}
-
-.qr-box{
-  width:64px;
-  height:64px;
-  border:1px dashed var(--slate);
-  border-radius:3px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:0.65rem;
-  color:var(--slate);
-  text-align:center;
-  padding:4px;
-}
-
-details{
-  margin-top:14px;
-}
-
-summary{
-  cursor:pointer;
-  font-size:0.88rem;
-  font-weight:600;
-  color:var(--slate);
-}
-
-summary:hover{
-  color:var(--orange);
-}
-
-.info-list{
-  margin:10px 0 0 18px;
-  color:var(--slate);
-  font-size:0.9rem;
-}
-
-.info-list li{
-  margin-bottom:4px;
-}
-
-footer{
-  border-top:1px solid rgba(23,32,51,0.12);
-  padding:28px 0;
-  color:var(--slate);
-  font-size:0.82rem;
-  text-align:center;
-}
+footer{border-top:1px solid rgba(28,18,11,0.12); padding:32px 0; color:var(--umber); font-size:0.9rem; text-align:center;}
 </style>
 </head>
-
 <body>
 
 <header>
   <div class="wrap">
-
     <span class="logo">ACA</span>
-
-    <a class="back-link" href="index.html">
-      ← Back to main site
-    </a>
-
+    <a class="back-link" href="index.html">← Main site</a>
   </div>
 </header>
 
-<section class="page-head wrap">
-
-  <p class="eyebrow">Events & Resources</p>
-
+<section class="page-head wrap reveal">
+  <p class="eyebrow">Events</p>
   <h1>What's coming up</h1>
-
-  <p>
-    Meeting dates, tournament info, study slides, and check-in QR codes — all kept on this one page so it's easy to update on its own without touching the rest of the site.
-  </p>
-
-  <div class="quick-links">
-
-    <a href="#">
-      This Week's Slides
-    </a>
-
-    <a href="#">
-      Study Guides Folder
-    </a>
-
-    <a href="#">
-      Tournament Registration
-    </a>
-
-  </div>
-
 </section>
 
 <section class="wrap">
-
   <div class="tabs">
-
-    <button class="active" onclick="showTab('upcoming', this)">
-      Upcoming
-    </button>
-
-    <button onclick="showTab('past', this)">
-      Past Events
-    </button>
-
+    <button class="active" onclick="showTab('upcoming', this)">Upcoming</button>
+    <button onclick="showTab('past', this)">Past</button>
   </div>
-
 
   <div id="tab-upcoming">
-
-    <div class="event-card">
-
+    <div class="event-card reveal" style="--accent:var(--gold)">
       <div class="event-top">
-
-        <div class="event-date">
-          Sep 30
-        </div>
-
-        <div class="event-title">
-
-          <h3>
-            Chapter Meeting — Study Session
-          </h3>
-
-          <div class="event-meta">
-            3:15–4:15 PM · Room [XXX]
-          </div>
-
-        </div>
-
+        <div class="event-date">Sep 30</div>
+        <div class="event-title"><h3>Chapter Meeting</h3><div class="event-meta">3:15–4:15 PM · Room [XXX]</div></div>
       </div>
-
-      <div class="tag-row">
-        <span class="tag">Humanities</span>
-        <span class="tag">History</span>
-      </div>
-
-      <p class="event-desc">
-        [Brief description — e.g. practice test review, category focus for this week.]
-      </p>
-
       <div class="event-actions">
-
-        <a class="action-btn" href="#">
-          Slides →
-        </a>
-
-        <div class="qr-box">
-          QR: check-in
-        </div>
-
+        <a class="action-btn" href="#">Slides →</a>
+        <div class="qr-box">QR</div>
       </div>
-
-      <details>
-
-        <summary>
-          Important info
-        </summary>
-
-        <ul class="info-list">
-
-          <li>
-            [What to bring, e.g. laptop or pencil/scantron]
-          </li>
-
-          <li>
-            [Any prep expected beforehand]
-          </li>
-
-        </ul>
-
-      </details>
-
     </div>
 
-
-    <div class="event-card">
-
+    <div class="event-card reveal" style="--accent:var(--maroon)">
       <div class="event-top">
-
-        <div class="event-date">
-          Oct 12
-        </div>
-
-        <div class="event-title">
-
-          <h3>
-            Regional Tournament
-          </h3>
-
-          <div class="event-meta">
-            [Venue], Houston, TX
-          </div>
-
-        </div>
-
+        <div class="event-date">Oct 12</div>
+        <div class="event-title"><h3>Regional Tournament</h3><div class="event-meta">[Venue], Houston, TX</div></div>
       </div>
-
-      <div class="tag-row">
-
-        <span class="tag">Science</span>
-        <span class="tag">Humanities</span>
-        <span class="tag">History</span>
-        <span class="tag">[Category]</span>
-
-      </div>
-
-      <p class="event-desc">
-        [Description — check-in time, categories being tested, how results advance to state.]
-      </p>
-
       <div class="event-actions">
-
-        <a class="action-btn" href="#">
-          Registration →
-        </a>
-
-        <a class="action-btn" href="#">
-          Slides →
-        </a>
-
-        <div class="qr-box">
-          QR: check-in
-        </div>
-
+        <a class="action-btn" href="#">Register →</a>
+        <a class="action-btn" href="#">Slides →</a>
+        <div class="qr-box">QR</div>
       </div>
-
-      <details>
-
-        <summary>
-          Important info
-        </summary>
-
-        <ul class="info-list">
-
-          <li>
-            [Arrival time and location details]
-          </li>
-
-          <li>
-            [What each category test covers]
-          </li>
-
-          <li>
-            [Transportation / permission slip info]
-          </li>
-
-        </ul>
-
-      </details>
-
     </div>
 
-
-    <div class="event-card">
-
+    <div class="event-card reveal" style="--accent:var(--navy)">
       <div class="event-top">
-
-        <div class="event-date">
-          Oct 25
-        </div>
-
-        <div class="event-title">
-
-          <h3>
-            Mock Test — All Categories
-          </h3>
-
-          <div class="event-meta">
-            [Time] · Room [XXX]
-          </div>
-
-        </div>
-
+        <div class="event-date">Oct 25</div>
+        <div class="event-title"><h3>Mock Test</h3><div class="event-meta">[Time] · Room [XXX]</div></div>
       </div>
-
-      <div class="tag-row">
-
-        <span class="tag">Science</span>
-        <span class="tag">[Category]</span>
-
-      </div>
-
-      <p class="event-desc">
-        [Description of the mock test format and what it's preparing members for.]
-      </p>
-
       <div class="event-actions">
-
-        <a class="action-btn" href="#">
-          Slides →
-        </a>
-
-        <div class="qr-box">
-          QR: results
-        </div>
-
+        <a class="action-btn" href="#">Slides →</a>
+        <div class="qr-box">QR</div>
       </div>
-
     </div>
-
   </div>
-
 
   <div id="tab-past" style="display:none;">
-
-    <div class="event-card">
-
+    <div class="event-card reveal" style="--accent:var(--copper)">
       <div class="event-top">
-
-        <div class="event-date">
-          [Date]
-        </div>
-
-        <div class="event-title">
-
-          <h3>
-            [Past event name]
-          </h3>
-
-          <div class="event-meta">
-            [Recap — placement, medals earned, standout categories]
-          </div>
-
-        </div>
-
+        <div class="event-date">[Date]</div>
+        <div class="event-title"><h3>[Past event]</h3><div class="event-meta">[Placement / recap]</div></div>
       </div>
-
-      <div class="event-actions">
-
-        <a class="action-btn" href="#">
-          Results →
-        </a>
-
-        <a class="action-btn" href="#">
-          Photos →
-        </a>
-
-      </div>
-
+      <div class="event-actions"><a class="action-btn" href="#">Results →</a></div>
     </div>
-
   </div>
-
 </section>
 
-<footer>
-  ACA · Bridgeland High School — this page is maintained separately from the main site
-</footer>
+<footer>ACA · Bridgeland High School</footer>
 
 <script>
-
 function showTab(which, btn){
-
-  document.getElementById('tab-upcoming').style.display =
-    which === 'upcoming' ? 'block' : 'none';
-
-  document.getElementById('tab-past').style.display =
-    which === 'past' ? 'block' : 'none';
-
-  document.querySelectorAll('.tabs button').forEach(
-    b => b.classList.remove('active')
-  );
-
+  document.getElementById('tab-upcoming').style.display = which==='upcoming' ? 'block' : 'none';
+  document.getElementById('tab-past').style.display = which==='past' ? 'block' : 'none';
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-
 }
-
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view'); io.unobserve(e.target);}});},{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+} else { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in-view')); }
 </script>
-
 </body>
 </html>
-
